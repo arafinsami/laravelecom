@@ -5,6 +5,7 @@
     <div class="sl-mainpanel">
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
+                
                 <h6 class="card-body-title">category lists</h6>
 
                 @if (session('success'))
@@ -25,6 +26,7 @@
                     </div>
                 @endif
                 <div class="table-wrapper">
+                <a href="{{ route('admin.category.create') }}" class="btn btn-primary">create category</a>
                     <table id="category_table" class="table display responsive nowrap">
                         <thead>
                             <tr>

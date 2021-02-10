@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use Carbon\Carbon;
+
 
 class CategoryController extends Controller {
     
@@ -17,16 +19,21 @@ class CategoryController extends Controller {
         return view('admin.category.lists',compact('categories'));
     }
 
+    public function create(){
+        return view('admin.category.create');
+    }
+
     public function save(Request $request) {
 
         $this-> validate($request,[
-            'categoryName' => 'required',
+            'categoryName' => 'required'
         ]);
 
         $category = new Category();
         $category->categoryName = $request->categoryName;
+        $category->created_at = Carbon::now();
         $category->save();
-        return redirect(route('admin/category-list'))->with('success','category successfully saved');
+        return redirect(route('admin.category.lists'))->with('success','successfully created');
     }
 
     public function edit($categoryId){
@@ -43,12 +50,13 @@ class CategoryController extends Controller {
         $category = Category::find($request->categoryId);
         $category->categoryName = $request->categoryName;
         $category->status = $request->status;
-        $category->save();
-        return redirect(route('admin.category-list'))->with('success','category successfully updated');
+        $category->updated_at = Carbon::now();
+        $category->update();
+        return redirect(route('admin.category.lists'))->with('success','successfully updated');
     }
 
     public function delete($categoryId){
         $category = Category::find($categoryId)->delete();
-        return redirect(route('admin.category-list'))->with('delete','category successfully deleted');
+        return redirect(route('admin.category.lists'))->with('delete','successfully deleted');
     }
 }

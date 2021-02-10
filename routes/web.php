@@ -33,8 +33,9 @@ Route::get('admin/logout','AdminController@logout')->name('admin.logout');
 //==================admin route ============================
 
 //=====category crud start========
-Route::get('admin/category-list','Admin\CategoryController@index')->name('admin.category-list');
-Route::post('admin/category-save','Admin\CategoryController@save')->name('admin.category-save');
+Route::get('admin/category/lists','Admin\CategoryController@index')->name('admin.category.lists');
+Route::get('admin/category/create','Admin\CategoryController@create')->name('admin.category.create');
+Route::post('admin/category/save','Admin\CategoryController@save')->name('admin.category.save');
 Route::get('admin/category/edit/{categoryId}','Admin\CategoryController@edit')->name('admin.category.edit');
 Route::post('admin/category/update','Admin\CategoryController@update')->name('admin.category.update');
 Route::get('admin/category/delete/{id}','Admin\CategoryController@delete')->name('admin.category.delete');
