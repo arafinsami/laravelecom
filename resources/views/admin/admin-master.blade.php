@@ -60,7 +60,7 @@
             </div>
 
             <div class="sl-sideleft-menu">
-                <a href="index.html" class="sl-menu-link">
+                <a href="{{ url('admin/home') }}" class="sl-menu-link @yield('dashboard')">
                     <div class="sl-menu-item">
                         <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
                         <span class="menu-item-label">Dashboard</span>
@@ -74,12 +74,20 @@
                     </div>
                 </a>
 
-                <a href="{{ route('admin.category.lists') }}" class="sl-menu-link">
+                <a href="{{ route('admin.category.lists') }}" class="sl-menu-link @yield('category')">
                     <div class="sl-menu-item">
                         <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
                         <span class="menu-item-label">Category</span>
                     </div>
                 </a>
+
+                <a href="{{ route('admin.brand.lists') }}" class="sl-menu-link @yield('brand')">
+                    <div class="sl-menu-item">
+                        <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                        <span class="menu-item-label">Brand</span>
+                    </div>
+                </a>
+
             </div>
             <br>
         </div><!-- sl-sideleft -->
@@ -314,27 +322,38 @@
     <script src="{{ asset('dashboard') }}/lib/jquery-ui/jquery-ui.js"></script>
 
     <!-- DataTable -->
-       <script src="{{ asset('dashboard') }}/lib/highlightjs/highlight.pack.js"></script>
-       <script src="{{ asset('dashboard') }}/lib/datatables/jquery.dataTables.js"></script>
-       <script src="{{ asset('dashboard') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
-       <script src="{{ asset('dashboard') }}/lib/select2/js/select2.min.js"></script>
+    <script src="{{ asset('dashboard') }}/lib/highlightjs/highlight.pack.js"></script>
+    <script src="{{ asset('dashboard') }}/lib/datatables/jquery.dataTables.js"></script>
+    <script src="{{ asset('dashboard') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="{{ asset('dashboard') }}/lib/select2/js/select2.min.js"></script>
 
-       <script>
-           $(function() {
-               'use strict';
-               $('#category_table').DataTable({
-                   responsive: true,
-                   language: {
-                       searchPlaceholder: 'Search...',
-                       sSearch: '',
-                       lengthMenu: '_MENU_ items/page',
-                   }
-               });
-               $('.dataTables_length select').select2({
-                   minimumResultsForSearch: Infinity
-               });
-           });
-       </script>
+    <script>
+        $(function() {
+            'use strict';
+            $('#category_table').DataTable({
+                responsive: true,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+
+            $('#brand_table').DataTable({
+                responsive: true,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+            
+            $('.dataTables_length select').select2({
+                minimumResultsForSearch: Infinity
+            });
+        });
+
+    </script>
 
     <script src="{{ asset('dashboard') }}/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="{{ asset('dashboard') }}/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>

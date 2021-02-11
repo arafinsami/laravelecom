@@ -1,7 +1,7 @@
 @extends('admin.admin-master')
 
-@section('category')
-  active
+@section('brand')
+    active
 @endsection
 
 @section('admin_content');
@@ -9,8 +9,8 @@
     <div class="sl-mainpanel">
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
-                
-                <h6 class="card-body-title">category lists</h6>
+
+                <h6 class="card-body-title">brand lists</h6>
 
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -30,11 +30,11 @@
                     </div>
                 @endif
                 <div class="table-wrapper">
-                <a href="{{ route('admin.category.create') }}" class="btn btn-primary">create category</a>
-                    <table id="category_table" class="table display responsive nowrap">
+                    <a href="{{ route('admin.brand.create') }}" class="btn btn-primary">create brand</a>
+                    <table id="brand_table" class="table display responsive nowrap">
                         <thead>
                             <tr>
-                                <th class="wd-15p">Category name</th>
+                                <th class="wd-15p">Brand name</th>
                                 <th class="wd-15p">Status</th>
                                 <th class="wd-20p">Action</th>
                             </tr>
@@ -43,20 +43,20 @@
                             @php
                                 $i = 1;
                             @endphp
-                            @foreach ($categories as $category)
+                            @foreach ($brands as $brand)
                                 <tr>
-                                    <td>{{ $category->categoryName }}</td>
+                                    <td>{{ $brand->brandName }}</td>
                                     <td>
-                                        @if ($category->status == 1)
+                                        @if ($brand->status == 1)
                                             <span class="badge badge-success">Active</span>
                                         @else
                                             <span class="badge badge-danger">InActive</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/category/edit/' . $category->id) }}"
+                                        <a href="{{ url('admin/brand/edit/' . $brand->id) }}"
                                             class="btn btn-info">Edit</a>
-                                        <a href="{{ url('admin/category/delete/' . $category->id) }}"
+                                        <a href="{{ url('admin/brand/delete/' . $brand->id) }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>

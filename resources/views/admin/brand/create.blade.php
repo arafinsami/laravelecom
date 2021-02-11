@@ -5,7 +5,8 @@
     <div class="sl-mainpanel">
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
-                <h6 class="card-body-title">category create</h6>
+                <h6 class="card-body-title">brand create</h6>
+                
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <div class="alert alert-danger" role="alert">
@@ -13,14 +14,15 @@
                         </div>
                     @endforeach
                 @endif
-                <form action="{{ route('admin.category.save') }}" method="POST">
+
+                <form action="{{ route('admin.brand.save') }}" method="POST">
                     @csrf
                     <div class="wd-300">
                         <div class="d-md-flex mg-b-30">
                             <div class="form-group mg-b-0">
-                                <label>category name: <span class="tx-danger">*</span></label>
-                                <input type="text" name="categoryName" class="form-control wd-200 wd-sm-250"
-                                    placeholder="category name">
+                                <label>brand name: <span class="tx-danger">*</span></label>
+                                <input type="text" name="brandName" class="form-control wd-200 wd-sm-250"
+                                    placeholder="brand name">
                             </div>
                         </div>
                         <div class="d-md-flex mg-b-30">

@@ -40,3 +40,12 @@ Route::get('admin/category/edit/{categoryId}','Admin\CategoryController@edit')->
 Route::post('admin/category/update','Admin\CategoryController@update')->name('admin.category.update');
 Route::get('admin/category/delete/{id}','Admin\CategoryController@delete')->name('admin.category.delete');
 //=====category crud end========
+
+//=====brand crud start========
+Route::get('admin/brand/lists','Admin\BrandController@index')->name('admin.brand.lists');
+Route::get('admin/brand/create','Admin\BrandController@create')->name('admin.brand.create');
+Route::post('admin/brand/save','Admin\BrandController@save')->name('admin.brand.save');
+Route::get('admin/brand/edit/{categoryId}','Admin\BrandController@edit')->name('admin.brand.edit');
+Route::post('admin/brand/update','Admin\BrandController@update')->name('admin.brand.update');
+Route::get('admin/brand/delete/{id}','Admin\BrandController@delete')->name('admin.brand.delete');
+//=====brand crud end========
