@@ -88,6 +88,13 @@
                     </div>
                 </a>
 
+                <a href="{{ route('admin.product.lists') }}" class="sl-menu-link @yield('product')">
+                    <div class="sl-menu-item">
+                        <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                        <span class="menu-item-label">Product</span>
+                    </div>
+                </a>
+
             </div>
             <br>
         </div><!-- sl-sideleft -->

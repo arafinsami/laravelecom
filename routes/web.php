@@ -30,7 +30,9 @@ Route::get('admin','Admin\LoginController@showLoginForm')->name('admin.login');
 Route::post('admin','Admin\LoginController@Login');
 Route::get('admin/logout','AdminController@logout')->name('admin.logout');
 
-//==================admin route ============================
+
+
+//==================admin route start==========================================================================
 
 //=====category crud start========
 Route::get('admin/category/lists','Admin\CategoryController@index')->name('admin.category.lists');
@@ -49,3 +51,9 @@ Route::get('admin/brand/edit/{categoryId}','Admin\BrandController@edit')->name('
 Route::post('admin/brand/update','Admin\BrandController@update')->name('admin.brand.update');
 Route::get('admin/brand/delete/{id}','Admin\BrandController@delete')->name('admin.brand.delete');
 //=====brand crud end========
+
+//=====product crud start========
+Route::get('admin/product/lists','Admin\ProductController@index')->name('admin.product.lists');
+//=====product crud end========
+
+//==================admin route ends==========================================================================
