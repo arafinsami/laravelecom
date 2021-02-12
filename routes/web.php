@@ -49,15 +49,22 @@ Route::get('admin/category/active/{categoryId}','Admin\CategoryController@active
 Route::get('admin/brand/lists','Admin\BrandController@index')->name('admin.brand.lists');
 Route::get('admin/brand/create','Admin\BrandController@create')->name('admin.brand.create');
 Route::post('admin/brand/save','Admin\BrandController@save')->name('admin.brand.save');
-Route::get('admin/brand/edit/{categoryId}','Admin\BrandController@edit')->name('admin.brand.edit');
+Route::get('admin/brand/edit/{brandId}','Admin\BrandController@edit')->name('admin.brand.edit');
 Route::post('admin/brand/update','Admin\BrandController@update')->name('admin.brand.update');
-Route::get('admin/brand/delete/{id}','Admin\BrandController@delete')->name('admin.brand.delete');
+Route::get('admin/brand/delete/{brandId}','Admin\BrandController@delete')->name('admin.brand.delete');
 Route::get('admin/brand/inactive/{brandId}','Admin\BrandController@inactive');
 Route::get('admin/brand/active/{brandId}','Admin\BrandController@active');
 //=====brand crud end========
 
 //=====product crud start========
 Route::get('admin/product/lists','Admin\ProductController@index')->name('admin.product.lists');
+Route::get('admin/product/create','Admin\ProductController@create')->name('admin.product.create');
+Route::post('admin/product/save','Admin\ProductController@save')->name('admin.product.save');
+Route::get('admin/product/edit/{productId}','Admin\ProductController@edit')->name('admin.product.edit');
+Route::post('admin/product/update','Admin\ProductController@update')->name('admin.product.update');
+Route::get('admin/product/delete/{productId}','Admin\ProductController@delete')->name('admin.product.delete');
+Route::get('admin/product/inactive/{productId}','Admin\ProductController@inactive');
+Route::get('admin/product/active/{productId}','Admin\ProductController@active');
 //=====product crud end========
 
 //==================admin route ends==========================================================================

@@ -61,12 +61,12 @@ class BrandController extends Controller {
 
     public function inactive($brandId){
         Brand::find($brandId)->update(['status' => 0]);
-        return redirect(route('admin.brand.lists'))->with('statusupdated','brand inactive');
+        return redirect(route('admin.brand.lists'))->with('status','brand inactivated');
     }
 
     public function active($brandId){
         Brand::find($brandId)->update(['status' => 1]);
-        return redirect(route('admin.brand.lists'))->with('statusupdated','brand active');
+        return redirect(route('admin.brand.lists'))->with('status','brand activated');
     }
 
 }

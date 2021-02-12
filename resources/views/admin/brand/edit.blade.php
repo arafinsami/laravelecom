@@ -12,9 +12,10 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">brand edit</h6>
-                <form action="{{ route('admin.brand.update') }}" data-parsley-validate method="POST">
+                <form action="{{ route('admin.brand.update') }}" method="POST">
                     @csrf
                     <input type="hidden" name="brandId" value="{{ $brand->id }}">
+                    
                     <div class="wd-300">
                         <div class="d-md-flex mg-b-30">
                             <div class="form-group mg-b-0">

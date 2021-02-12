@@ -38,8 +38,8 @@
                         <button type="submit" class="btn btn-info">submit</button>
                     </div>
                 </form>
-            </div><!-- card -->
-        </div><!-- sl-pagebody -->
-    </div><!-- sl-mainpanel -->
+            </div>
+        </div>
+    </div>
     <!-- ########## END: MAIN PANEL ########## -->
 @endsection

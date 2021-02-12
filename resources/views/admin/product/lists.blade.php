@@ -29,6 +29,16 @@
                         </button>
                     </div>
                 @endif
+
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('status') }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
                 <div class="table-wrapper">
                     <a href="{{ route('admin.product.create') }}" class="btn btn-primary">create product</a>
                     <table id="brand_table" class="table display responsive nowrap">
@@ -43,21 +53,28 @@
                             @php
                                 $i = 1;
                             @endphp
-                            @foreach ($brands as $brand)
+                            @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $brand->brandName }}</td>
+                                    <td>{{ $product->productName }}</td>
                                     <td>
-                                        @if ($brand->status == 1)
+                                        @if ($product->status == 1)
                                             <span class="badge badge-success">Active</span>
                                         @else
                                             <span class="badge badge-danger">InActive</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/brand/edit/' . $brand->id) }}"
+                                        <a href="{{ url('admin/product/edit/' . $product->id) }}"
                                             class="btn btn-info">Edit</a>
-                                        <a href="{{ url('admin/brand/delete/' . $brand->id) }}"
+                                        <a href="{{ url('admin/product/delete/' . $product->id) }}"
                                             class="btn btn-danger">Delete</a>
+                                        @if ($product->status == 1)
+                                            <a href="{{ url('admin/product/inactive/' . $product->id) }}"
+                                                class="btn btn-danger"><i class="fa fa-arrow-down"></i></a>
+                                        @else
+                                            <a href="{{ url('admin/product/active/' . $product->id) }}"
+                                                class="btn btn-success"><i class="fa fa-arrow-up"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
