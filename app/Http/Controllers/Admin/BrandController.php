@@ -58,4 +58,15 @@ class BrandController extends Controller {
         $brand = Brand::find($brandId)->delete();
         return redirect(route('admin.brand.lists'))->with('delete','successfully deleted');
     }
+
+    public function inactive($brandId){
+        Brand::find($brandId)->update(['status' => 0]);
+        return redirect(route('admin.brand.lists'))->with('statusupdated','brand inactive');
+    }
+
+    public function active($brandId){
+        Brand::find($brandId)->update(['status' => 1]);
+        return redirect(route('admin.brand.lists'))->with('statusupdated','brand active');
+    }
+
 }

@@ -59,4 +59,14 @@ class CategoryController extends Controller {
         $category = Category::find($categoryId)->delete();
         return redirect(route('admin.category.lists'))->with('delete','successfully deleted');
     }
+
+    public function inactive($categoryId){
+        Category::find($categoryId)->update(['status' => 0]);
+        return redirect(route('admin.category.lists'))->with('statusupdated','category inactive');
+    }
+
+    public function active($categoryId){
+        Category::find($categoryId)->update(['status' => 1]);
+        return redirect(route('admin.category.lists'))->with('statusupdated','category active');
+    }
 }

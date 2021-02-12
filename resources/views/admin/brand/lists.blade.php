@@ -29,6 +29,16 @@
                         </button>
                     </div>
                 @endif
+
+                @if (session('statusupdated'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('statusupdated') }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                
                 <div class="table-wrapper">
                     <a href="{{ route('admin.brand.create') }}" class="btn btn-primary">create brand</a>
                     <table id="brand_table" class="table display responsive nowrap">
@@ -58,6 +68,13 @@
                                             class="btn btn-info">Edit</a>
                                         <a href="{{ url('admin/brand/delete/' . $brand->id) }}"
                                             class="btn btn-danger">Delete</a>
+                                        @if ($brand->status == 1)
+                                            <a href="{{ url('admin/brand/inactive/' . $brand->id) }}"
+                                                class="btn btn-danger"><i class="fa fa-arrow-down"></i></a>
+                                        @else
+                                            <a href="{{ url('admin/brand/active/' . $brand->id) }}"
+                                                class="btn btn-success"><i class="fa fa-arrow-up"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

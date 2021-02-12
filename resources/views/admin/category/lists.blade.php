@@ -1,7 +1,7 @@
 @extends('admin.admin-master')
 
 @section('category')
-  active
+    active
 @endsection
 
 @section('admin_content');
@@ -9,7 +9,7 @@
     <div class="sl-mainpanel">
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
-                
+
                 <h6 class="card-body-title">category lists</h6>
 
                 @if (session('success'))
@@ -29,8 +29,18 @@
                         </button>
                     </div>
                 @endif
+
+                @if (session('statusupdated'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('statusupdated') }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
                 <div class="table-wrapper">
-                <a href="{{ route('admin.category.create') }}" class="btn btn-primary">create category</a>
+                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">create category</a>
                     <table id="category_table" class="table display responsive nowrap">
                         <thead>
                             <tr>
@@ -58,6 +68,13 @@
                                             class="btn btn-info">Edit</a>
                                         <a href="{{ url('admin/category/delete/' . $category->id) }}"
                                             class="btn btn-danger">Delete</a>
+                                        @if ($category->status == 1)
+                                            <a href="{{ url('admin/category/inactive/' . $category->id) }}"
+                                                class="btn btn-danger"><i class="fa fa-arrow-down"></i></a>
+                                        @else
+                                            <a href="{{ url('admin/category/active/' . $category->id) }}"
+                                                class="btn btn-success"><i class="fa fa-arrow-up"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
