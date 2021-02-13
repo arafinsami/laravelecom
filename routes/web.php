@@ -62,6 +62,7 @@ Route::get('admin/product/create','Admin\ProductController@create')->name('admin
 Route::post('admin/product/save','Admin\ProductController@save')->name('admin.product.save');
 Route::get('admin/product/edit/{productId}','Admin\ProductController@edit')->name('admin.product.edit');
 Route::post('admin/product/update','Admin\ProductController@update')->name('admin.product.update');
+Route::post('admin/product/update-image','Admin\ProductController@updateImage')->name('admin.product.update-image');
 Route::get('admin/product/delete/{productId}','Admin\ProductController@delete')->name('admin.product.delete');
 Route::get('admin/product/inactive/{productId}','Admin\ProductController@inactive');
 Route::get('admin/product/active/{productId}','Admin\ProductController@active');

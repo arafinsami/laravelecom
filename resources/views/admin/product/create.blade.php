@@ -35,10 +35,10 @@
                             <div class="row mg-b-25">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">Product Name: <span
+                                        <label class="form-control-label">product name: <span
                                                 class="tx-danger">*</span></label>
                                         <input class="form-control" type="text" name="productName"
-                                            value="{{ old('productName') }}" placeholder="product name">
+                                            placeholder="product name">
                                         @error('productName')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
@@ -46,20 +46,20 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">product_code: <span
+                                        <label class="form-control-label">product code: <span
                                                 class="tx-danger">*</span></label>
                                         <input class="form-control" type="text" name="productCode"
-                                            value="{{ old('productCode') }}" placeholder="product code">
+                                            placeholder="product code">
                                         @error('productCode')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">Price: <span class="tx-danger">*</span></label>
-                                        <input class="form-control" type="text" name="price" value="{{ old('price') }}"
-                                            placeholder="product price">
+                                        <label class="form-control-label">price: <span class="tx-danger">*</span></label>
+                                        <input class="form-control" type="text" name="price" placeholder="product price">
                                         @error('price')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <label class="form-control-label">Quantity: <span class="tx-danger">*</span></label>
                                         <input class="form-control" type="number" name="productQuantity"
-                                            value="{{ old('productQuantity') }}" placeholder="product quantity">
+                                            placeholder="product quantity">
                                         @error('productQuantity')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
@@ -87,7 +87,6 @@
                                                 <option value="{{ $category->id }}">{{ $category->categoryName }}
                                                 </option>
                                             @endforeach
-
                                         </select>
                                         @error('categoryId')
                                             <strong class="text-danger">{{ $message }}</strong>
@@ -110,22 +109,37 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+
+                                <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">Short Description: <span
+                                        <label class="form-control-label">product slug: <span
                                                 class="tx-danger">*</span></label>
-                                        <textarea name="shortDescription" id="summernote"></textarea>
+                                        <input class="form-control" type="text" name="productSlug"
+                                            placeholder="product slug">
+                                        @error('productSlug')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label">short description: <span
+                                                class="tx-danger">*</span></label>
+                                        <textarea class="form-control" name="shortDescription" id="summernote"
+                                            placeholder="short description"></textarea>
                                         @error('shortDescription')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
+                                <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">Long Description: <span
+                                        <label class="form-control-label">long description: <span
                                                 class="tx-danger">*</span></label>
-                                        <textarea name="longDescription" id="summernote2"></textarea>
+                                        <textarea class="form-control" name="longDescription" id="summernote2"
+                                            placeholder="long description"></textarea>
                                         @error('longDescription')
                                             <strong class="text-danger">{{ $message }}</strong>
                                         @enderror
@@ -167,7 +181,7 @@
                             </div>
 
                             <div class="form-layout-footer">
-                                <button class="btn btn-info mg-r-5">Add Products</button>
+                                <button class="btn btn-info mg-r-5">add product</button>
                             </div>
                     </form>
                 </div>

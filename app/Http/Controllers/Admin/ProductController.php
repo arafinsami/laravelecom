@@ -9,6 +9,7 @@ use App\Category;
 use App\Brand;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller {
 
@@ -31,7 +32,7 @@ class ProductController extends Controller {
 
         $request->validate([
             'productName'         => 'required|max:255',
-            //'productSlug'         => 'required|max:255',
+            'productSlug'         => 'required|max:255',
             'productCode'         => 'required|max:255',
             'productQuantity'     => 'required|max:255',
             'categoryId'          => 'required|max:255',
@@ -109,80 +110,60 @@ class ProductController extends Controller {
 
     public function updateImage(Request $request){
         
-        $product_id = $request->id;
-        $old_one = $request->img_one;
-        $old_two = $request->img_two;
-        $old_three = $request->img_three;
-        if ($request->has('image_one') && $request->has('image_two')) {
-            unlink($old_one);
-            unlink($old_two);
-            $imag_one = $request->file('image_one');                
-             $name_gen = hexdec(uniqid()).'.'.$imag_one->getClientOriginalExtension();
-             Image::make($imag_one)->resize(270,270)->save('fontend/img/product/upload/'.$name_gen);       
-             $img_url1 = 'fontend/img/product/upload/'.$name_gen;
- 
-             Product::findOrFail($product_id)->update([
-                 'image_one' => $img_url1,
-                 'updated_at' => Carbon::now(),
-             ]);
+        $productId = $request->productId;
+        $product = Product::findOrFail($productId);
+        $oldOne = $product->imageOne;
+        $oldTwo = $product->imageTwo;
+        $oldThree = $product->imageThree;
+        
+        if($request->hasFile('imageOne')){
 
-             $imag_one = $request->file('image_two');                
-             $name_gen = hexdec(uniqid()).'.'.$imag_one->getClientOriginalExtension();
-             Image::make($imag_one)->resize(270,270)->save('fontend/img/product/upload/'.$name_gen);       
-             $img_url1 = 'fontend/img/product/upload/'.$name_gen;
- 
-             Product::findOrFail($product_id)->update([
-                 'image_two' => $img_url1,
-                 'updated_at' => Carbon::now(),
-             ]);
- 
-             return Redirect()->route('manage-products')->with('success','image successfully Updated');
-         }
-         
-        if ($request->has('image_one')) {
-           unlink($old_one);
-           $imag_one = $request->file('image_one');                
-            $name_gen = hexdec(uniqid()).'.'.$imag_one->getClientOriginalExtension();
-            Image::make($imag_one)->resize(270,270)->save('fontend/img/product/upload/'.$name_gen);       
-            $img_url1 = 'fontend/img/product/upload/'.$name_gen;
-
-            Product::findOrFail($product_id)->update([
-                'image_one' => $img_url1,
-                'updated_at' => Carbon::now(),
-            ]);
-
-            return Redirect()->route('manage-products')->with('success','image successfully Updated');
+            if(file_exists($oldOne)){
+                unlink($oldOne);
+            }
+            
+            $imagOne = $request->file('imageOne');                
+            $nameGen1 = hexdec(uniqid()).'.'.$imagOne->getClientOriginalExtension();
+            Image::make($imagOne)->resize(270,270)->save('frontend/upload/'.$nameGen1);       
+            $imgUrl1 = 'frontend/upload/'.$nameGen1;
+            $product = Product::find($productId);
+            $product->imageOne = $imgUrl1;
+            $product->updated_at = Carbon::now();
+            $product->update();
         }
 
-        if ($request->has('image_two')) {
-            unlink($old_two);
-            $imag_one = $request->file('image_two');                
-             $name_gen = hexdec(uniqid()).'.'.$imag_one->getClientOriginalExtension();
-             Image::make($imag_one)->resize(270,270)->save('fontend/img/product/upload/'.$name_gen);       
-             $img_url1 = 'fontend/img/product/upload/'.$name_gen;
- 
-             Product::findOrFail($product_id)->update([
-                 'image_two' => $img_url1,
-                 'updated_at' => Carbon::now(),
-             ]);
- 
-             return Redirect()->route('manage-products')->with('success','image successfully Updated');
-         }
+        if($request->hasFile('imageTwo')){
 
-         if ($request->has('image_three')) {
-            unlink($old_three);
-            $imag_one = $request->file('image_three');                
-             $name_gen = hexdec(uniqid()).'.'.$imag_one->getClientOriginalExtension();
-             Image::make($imag_one)->resize(270,270)->save('fontend/img/product/upload/'.$name_gen);       
-             $img_url1 = 'fontend/img/product/upload/'.$name_gen;
- 
-             Product::findOrFail($product_id)->update([
-                 'image_three' => $img_url1,
-                 'updated_at' => Carbon::now(),
-             ]);
- 
-             return Redirect()->route('manage-products')->with('success','image successfully Updated');
-         }
+            if(file_exists($oldTwo)){
+                unlink($oldTwo);
+            }
+            
+            $imageTwo = $request->file('imageTwo');                
+            $nameGen2 = hexdec(uniqid()).'.'.$imageTwo->getClientOriginalExtension();
+            Image::make($imageTwo)->resize(270,270)->save('frontend/upload/'.$nameGen2);       
+            $imgUrl2 = 'frontend/upload/'.$nameGen2;
+            $product = Product::find($productId);
+            $product->imageTwo = $imgUrl2;
+            $product->updated_at = Carbon::now();
+            $product->update();
+        }
+
+        if($request->hasFile('imageThree')){
+
+            if(file_exists($oldThree)){
+                unlink($oldThree);
+            }
+
+            $imageThree = $request->file('imageThree');                
+            $nameGen3 = hexdec(uniqid()).'.'.$imageThree->getClientOriginalExtension();
+            Image::make($imageThree)->resize(270,270)->save('frontend/upload/'.$nameGen3);       
+            $imgUrl3 = 'frontend/upload/'.$nameGen3;
+            $product = Product::find($productId);
+            $product->imageThree = $imgUrl3;
+            $product->updated_at = Carbon::now();
+            $product->update();
+        }
+        return redirect(route('admin.product.lists'))->with('success','successfully updated');
     }
     
     public function delete($productId) {
