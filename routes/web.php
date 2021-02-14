@@ -68,4 +68,15 @@ Route::get('admin/product/inactive/{productId}','Admin\ProductController@inactiv
 Route::get('admin/product/active/{productId}','Admin\ProductController@active');
 //=====product crud end========
 
+//=====coupon crud start========
+Route::get('admin/coupon/lists','Admin\CouponController@index')->name('admin.coupon.lists');
+Route::get('admin/coupon/create','Admin\CouponController@create')->name('admin.coupon.create');
+Route::post('admin/coupon/save','Admin\CouponController@save')->name('admin.coupon.save');
+Route::get('admin/coupon/edit/{couponId}','Admin\CouponController@edit')->name('admin.coupon.edit');
+Route::post('admin/coupon/update','Admin\CouponController@update')->name('admin.coupon.update');
+Route::get('admin/coupon/delete/{couponId}','Admin\CouponController@delete')->name('admin.coupon.delete');
+Route::get('admin/coupon/inactive/{couponId}','Admin\CouponController@inactive');
+Route::get('admin/coupon/active/{couponId}','Admin\CouponController@active');
+//=====coupon crud end========
+
 //==================admin route ends==========================================================================

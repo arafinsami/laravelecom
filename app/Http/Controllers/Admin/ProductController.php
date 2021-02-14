@@ -45,18 +45,18 @@ class ProductController extends Controller {
             'imageThree'          => 'required|mimes:jpg,jpeg,png,gif',
         ],[
             'categoryId.required' => 'select category name',
-            'brandId.required' => 'select brand name',
+            'brandId.required'    => 'select brand name',
         ]);
 
         $imageOne = $request->file('imageOne');                
         $name_gen = hexdec(uniqid()).'.'.$imageOne->getClientOriginalExtension();
         Image::make($imageOne)->resize(270,270)->save('frontend/upload/'.$name_gen);       
-        $imgUrl1 = 'frontend/upload/'.$name_gen;
+        $imgUrl1  = 'frontend/upload/'.$name_gen;
 
         $imageTwo = $request->file('imageTwo');                
         $name_gen = hexdec(uniqid()).'.'.$imageTwo->getClientOriginalExtension();
         Image::make($imageTwo)->resize(270,270)->save('frontend/upload/'.$name_gen);       
-        $imgUrl2 = 'frontend/upload/'.$name_gen;
+        $imgUrl2  = 'frontend/upload/'.$name_gen;
 
         $imageThree = $request->file('imageThree');                
         $name_gen = hexdec(uniqid()).'.'.$imageThree->getClientOriginalExtension();
@@ -93,16 +93,16 @@ class ProductController extends Controller {
         $productId = $request->productId;
 
         Product::findOrFail($productId)->Update([
-            'categoryId' => $request->categoryId,
-            'brandId' => $request->brandId,
-            'productName' => $request->productName,
-            'productSlug' => strtolower(str_replace(' ','-',$request->productName)),
-            'productCode' => $request->productCode,
-            'price' => $request->price,
-            'productQuantity' => $request->productQuantity,
+            'categoryId'       => $request->categoryId,
+            'brandId'          => $request->brandId,
+            'productName'      => $request->productName,
+            'productSlug'      => strtolower(str_replace(' ','-',$request->productName)),
+            'productCode'      => $request->productCode,
+            'price'            => $request->price,
+            'productQuantity'  => $request->productQuantity,
             'shortDescription' => $request->shortDescription,
-            'longDescription' => $request->longDescription,
-            'update_at' => Carbon::now(),
+            'longDescription'  => $request->longDescription,
+            'update_at'        => Carbon::now(),
         ]);
 
         return redirect(route('admin.product.lists'))->with('success','successfully updated');
@@ -111,10 +111,10 @@ class ProductController extends Controller {
     public function updateImage(Request $request){
         
         $productId = $request->productId;
-        $product = Product::findOrFail($productId);
-        $oldOne = $product->imageOne;
-        $oldTwo = $product->imageTwo;
-        $oldThree = $product->imageThree;
+        $product   = Product::findOrFail($productId);
+        $oldOne    = $product->imageOne;
+        $oldTwo    = $product->imageTwo;
+        $oldThree  = $product->imageThree;
         
         if($request->hasFile('imageOne')){
 
@@ -122,12 +122,12 @@ class ProductController extends Controller {
                 unlink($oldOne);
             }
             
-            $imagOne = $request->file('imageOne');                
-            $nameGen1 = hexdec(uniqid()).'.'.$imagOne->getClientOriginalExtension();
+            $imagOne             = $request->file('imageOne');                
+            $nameGen1            = hexdec(uniqid()).'.'.$imagOne->getClientOriginalExtension();
             Image::make($imagOne)->resize(270,270)->save('frontend/upload/'.$nameGen1);       
-            $imgUrl1 = 'frontend/upload/'.$nameGen1;
-            $product = Product::find($productId);
-            $product->imageOne = $imgUrl1;
+            $imgUrl1             = 'frontend/upload/'.$nameGen1;
+            $product             = Product::find($productId);
+            $product->imageOne   = $imgUrl1;
             $product->updated_at = Carbon::now();
             $product->update();
         }
@@ -138,12 +138,12 @@ class ProductController extends Controller {
                 unlink($oldTwo);
             }
             
-            $imageTwo = $request->file('imageTwo');                
-            $nameGen2 = hexdec(uniqid()).'.'.$imageTwo->getClientOriginalExtension();
+            $imageTwo            = $request->file('imageTwo');                
+            $nameGen2            = hexdec(uniqid()).'.'.$imageTwo->getClientOriginalExtension();
             Image::make($imageTwo)->resize(270,270)->save('frontend/upload/'.$nameGen2);       
-            $imgUrl2 = 'frontend/upload/'.$nameGen2;
-            $product = Product::find($productId);
-            $product->imageTwo = $imgUrl2;
+            $imgUrl2             = 'frontend/upload/'.$nameGen2;
+            $product             = Product::find($productId);
+            $product->imageTwo   = $imgUrl2;
             $product->updated_at = Carbon::now();
             $product->update();
         }
@@ -154,11 +154,11 @@ class ProductController extends Controller {
                 unlink($oldThree);
             }
 
-            $imageThree = $request->file('imageThree');                
-            $nameGen3 = hexdec(uniqid()).'.'.$imageThree->getClientOriginalExtension();
+            $imageThree          = $request->file('imageThree');                
+            $nameGen3            = hexdec(uniqid()).'.'.$imageThree->getClientOriginalExtension();
             Image::make($imageThree)->resize(270,270)->save('frontend/upload/'.$nameGen3);       
-            $imgUrl3 = 'frontend/upload/'.$nameGen3;
-            $product = Product::find($productId);
+            $imgUrl3             = 'frontend/upload/'.$nameGen3;
+            $product             = Product::find($productId);
             $product->imageThree = $imgUrl3;
             $product->updated_at = Carbon::now();
             $product->update();

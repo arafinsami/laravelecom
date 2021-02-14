@@ -28,8 +28,8 @@ class BrandController extends Controller {
             'brandName' => 'required'
         ]);
 
-        $brand = new Brand();
-        $brand->brandName = $request->brandName;
+        $brand             = new Brand();
+        $brand->brandName  = $request->brandName;
         $brand->created_at = Carbon::now();
         $brand->save();
         return redirect(route('admin.brand.lists'))->with('success','successfully created');
@@ -46,9 +46,9 @@ class BrandController extends Controller {
             'brandName' => 'required',
         ]);
 
-        $brand = Brand::find($request->brandId);
-        $brand->brandName = $request->brandName;
-        $brand->status = $request->status;
+        $brand             = Brand::find($request->brandId);
+        $brand->brandName  = $request->brandName;
+        $brand->status     = $request->status;
         $brand->updated_at = Carbon::now();
         $brand->update();
         return redirect(route('admin.brand.lists'))->with('success','successfully updated');

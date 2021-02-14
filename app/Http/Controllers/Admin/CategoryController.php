@@ -29,9 +29,9 @@ class CategoryController extends Controller {
             'categoryName' => 'required'
         ]);
 
-        $category = new Category();
+        $category               = new Category();
         $category->categoryName = $request->categoryName;
-        $category->created_at = Carbon::now();
+        $category->created_at   = Carbon::now();
         $category->save();
         return redirect(route('admin.category.lists'))->with('success','successfully created');
     }
@@ -47,10 +47,10 @@ class CategoryController extends Controller {
             'categoryName' => 'required',
         ]);
 
-        $category = Category::find($request->categoryId);
+        $category               = Category::find($request->categoryId);
         $category->categoryName = $request->categoryName;
-        $category->status = $request->status;
-        $category->updated_at = Carbon::now();
+        $category->status       = $request->status;
+        $category->updated_at   = Carbon::now();
         $category->update();
         return redirect(route('admin.category.lists'))->with('success','successfully updated');
     }
