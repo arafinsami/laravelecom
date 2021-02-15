@@ -50,15 +50,9 @@
     @guest
     @else
         <!-- ########## START: LEFT PANEL ########## -->
-        <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
+        <div class="sl-logo"><a href="{{ url('admin/home') }}"><i class="icon ion-android-star-outline"></i> starlight</a>
+        </div>
         <div class="sl-sideleft">
-            <div class="input-group input-group-search">
-                <input type="search" name="search" class="form-control" placeholder="Search">
-                <span class="input-group-btn">
-                    <button class="btn"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-
             <div class="sl-sideleft-menu">
                 <a href="{{ url('admin/home') }}" class="sl-menu-link @yield('dashboard')">
                     <div class="sl-menu-item">
@@ -370,7 +364,7 @@
                     lengthMenu: '_MENU_ items/page',
                 }
             });
-            
+
             $('.dataTables_length select').select2({
                 minimumResultsForSearch: Infinity
             });
