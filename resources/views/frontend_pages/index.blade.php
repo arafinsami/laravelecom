@@ -49,9 +49,6 @@
                             @foreach ($categories as $category)
                                 <li data-filter=".filter{{ $category->id }}">{{ $category->categoryName }}</li>
                             @endforeach
-                            {{-- <li data-filter=".fresh-meat">Fresh Meat</li>
-                            <li data-filter=".vegetables">Vegetables</li>
-                            <li data-filter=".fastfood">Fastfood</li> --}}
                         </ul>
                     </div>
                 </div>
@@ -70,7 +67,11 @@
                                     <ul class="featured__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <form action="{{ url('add/to-cart/' . $product->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="price" value="{{ $product->price }}">
+                                            <li><button type="submit"><i class="fa fa-shopping-cart"></i></button></li>
+                                        </form>
                                     </ul>
                                 </div>
                                 <div class="featured__item__text">

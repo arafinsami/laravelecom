@@ -126,7 +126,16 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
+            @if (session('cart'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ session('cart') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
@@ -153,11 +162,20 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
+                        @php
+                            $totalPrice = App\Cart::all()
+                                ->where('userIp', request()->ip())
+                                ->sum(function ($t) {
+                                    return $t->price * $t->qty;
+                                });
+                            $cartQuantity = App\Cart::where('userIp', request()->ip())->sum('qty');
+                        @endphp
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>{{ $cartQuantity }}</span></a>
+                            </li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">item: <span>${{ $totalPrice }}</span></div>
                     </div>
                 </div>
             </div>
@@ -301,6 +319,14 @@
                     <script src="{{ asset('frontend') }}/js/mixitup.min.js"></script>
                     <script src="{{ asset('frontend') }}/js/owl.carousel.min.js"></script>
                     <script src="{{ asset('frontend') }}/js/main.js"></script>
+                    <script>
+                        $(function() {
+                            $(".alert").delay(2000).slideUp(200, function() {
+                                $(this).alert('close');
+                            });
+                        });
+
+                    </script>
 
 </body>
 

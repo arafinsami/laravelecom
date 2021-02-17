@@ -32,7 +32,7 @@ Route::get('admin/logout','AdminController@logout')->name('admin.logout');
 
 
 
-//==================admin route start==========================================================================
+//==================admin route start================
 
 //=====category crud start========
 Route::get('admin/category/lists','Admin\CategoryController@index')->name('admin.category.lists');
@@ -79,4 +79,9 @@ Route::get('admin/coupon/inactive/{couponId}','Admin\CouponController@inactive')
 Route::get('admin/coupon/active/{couponId}','Admin\CouponController@active');
 //=====coupon crud end========
 
-//==================admin route ends==========================================================================
+//==================admin route ends===============
+
+
+// ================= cart start============
+Route::post('add/to-cart/{prouctId}','CartController@addToCart');
+// ================= cart end============
