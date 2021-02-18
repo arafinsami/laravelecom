@@ -84,4 +84,6 @@ Route::get('admin/coupon/active/{couponId}','Admin\CouponController@active');
 
 // ================= cart start============
 Route::post('add/to-cart/{prouctId}','CartController@addToCart');
+Route::get('view/cart','CartController@viewCart');
+Route::post('cart/quantity/update/{cartId}','CartController@quantityUpdate');
 // ================= cart end============

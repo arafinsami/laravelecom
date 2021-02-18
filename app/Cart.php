@@ -12,4 +12,8 @@ class Cart extends Model {
         'price',
         'userIp'
     ];
+
+    public function getProduct(){
+        return $this->belongsTo(Product::class,'productId');
+    }
 }

@@ -28,6 +28,21 @@ class CartController extends Controller {
             $cart->save();
             return Redirect()->back()->with('cart','product added on cart');
         }
-        
     }
+
+    public function viewCart(){
+        $carts = Cart::where('userIp',request()->ip())->latest()->get();
+        $subtotal = Cart::all()->where('userIp',request()->ip())->sum(function($t){
+            return $t->price * $t->qty;
+         });
+        return view('frontend_pages.cart',compact('carts','subtotal'));
+    }
+
+    public function quantityUpdate(Request $request,$cartId){
+        Cart::where('id',$cartId)->where('userIp',request()->ip())->update([
+            'qty' => $request->qty,
+        ]);
+        return Redirect()->back()->with('cart_update','Quantity Updated');
+    }
+
 }
