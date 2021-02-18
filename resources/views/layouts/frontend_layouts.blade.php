@@ -190,6 +190,7 @@
     <!-- Header Section End -->
 
 
+    @if(Request::path() == '/')
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="container">
@@ -235,7 +236,8 @@
                         </div>
                     </div>
 
-                    <div class="hero__item set-bg" data-setbg="{{ asset('frontend') }}/img/hero/banner.jpg">
+                   @if(Request::path() == '/')
+                       <div class="hero__item set-bg" data-setbg="{{ asset('frontend') }}/img/hero/banner.jpg">
                         <div class="hero__text">
                             <span>FRUIT FRESH</span>
                             <h2>Vegetable <br />100% Organic</h2>
@@ -243,11 +245,14 @@
                             <a href="#" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
+                   @endif
+                    
                 </div>
             </div>
         </div>
     </section>
     <!-- Hero Section End -->
+    @endif
 
     @yield('content')
 

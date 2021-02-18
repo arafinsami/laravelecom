@@ -8,6 +8,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                
+                    @if (session('cart_delete'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ session('cart_delete') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if (session('cart_update'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ session('cart_update') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
@@ -32,7 +50,8 @@
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
-                                                <form action="{{ url('cart/quantity/update/' . $cart->id) }}" method="POST">
+                                                <form action="{{ url('cart/quantity/update/' . $cart->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     <div class="pro-qty">
                                                         <input type="text" name="qty" value="{{ $cart->qty }}" min="1">
@@ -45,7 +64,9 @@
                                             ${{ $cart->price * $cart->qty }}
                                         </td>
                                         <td class="shoping__cart__item__close">
-                                            <span class="icon_close"></span>
+                                            <a href="{{ url('cart/destroy/' . $cart->id) }}"> <span class="icon_close">
+                                                </span>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -57,9 +78,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                        <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

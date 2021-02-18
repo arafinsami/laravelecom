@@ -42,7 +42,13 @@ class CartController extends Controller {
         Cart::where('id',$cartId)->where('userIp',request()->ip())->update([
             'qty' => $request->qty,
         ]);
-        return Redirect()->back()->with('cart_update','Quantity Updated');
+        return Redirect()->back()->with('cart_update','quantity updated');
     }
+
+    public function destroy($cartId){
+        Cart::where('id',$cartId)->where('userIp',request()->ip())->delete();
+        return Redirect()->back()->with('cart_delete','product from cart Removed');
+    }
+
 
 }
