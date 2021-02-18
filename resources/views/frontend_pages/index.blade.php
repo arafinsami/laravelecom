@@ -52,10 +52,13 @@
                                     <ul class="featured__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <form action="{{ url('add/to-cart/' . $product->id) }}" method="POST">
+                                        <form id="shoppingCartform" action="{{ url('add/to-cart/' . $product->id) }}"
+                                            method="POST">
                                             @csrf
                                             <input type="hidden" name="price" value="{{ $product->price }}">
-                                            <li><button type="submit"><i class="fa fa-shopping-cart"></i></button> </li>
+                                            <li><a href="javascript:void()"
+                                                    onclick="document.getElementById('shoppingCartform').submit();"><i
+                                                        class="fa fa-shopping-cart"></i></a></li>
                                         </form>
                                     </ul>
                                 </div>

@@ -8,7 +8,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                
                     @if (session('cart_delete'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>{{ session('cart_delete') }}</strong>
@@ -17,7 +16,6 @@
                             </button>
                         </div>
                     @endif
-
                     @if (session('cart_update'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>{{ session('cart_update') }}</strong>
@@ -26,6 +24,7 @@
                             </button>
                         </div>
                     @endif
+
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
@@ -50,13 +49,14 @@
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
-                                                <form action="{{ url('cart/quantity/update/' . $cart->id) }}"
+                                                <form action="{{ url('cart/quantity/update/'. $cart->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     <div class="pro-qty">
                                                         <input type="text" name="qty" value="{{ $cart->qty }}" min="1">
                                                     </div>
-                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                    <button type="submit" class="btn btn-sm btn-success"><i
+                                                            class="fa fa-refresh"></i></button>
                                                 </form>
                                             </div>
                                         </td>
@@ -64,7 +64,7 @@
                                             ${{ $cart->price * $cart->qty }}
                                         </td>
                                         <td class="shoping__cart__item__close">
-                                            <a href="{{ url('cart/destroy/' . $cart->id) }}"> <span class="icon_close">
+                                            <a href="{{ url('cart/destroy/' . $cart->id) }}"><span class="icon_close">
                                                 </span>
                                             </a>
                                         </td>

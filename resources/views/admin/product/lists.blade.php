@@ -9,9 +9,6 @@
     <div class="sl-mainpanel">
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
-
-                <h6 class="card-body-title">product lists</h6>
-
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>{{ session('success') }}</strong>

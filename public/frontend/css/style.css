@@ -886,17 +886,17 @@ ol {
 	margin-right: 0;
 }
 
-.featured__item__pic__hover li:hover a,button[type=submit] {
+.featured__item__pic__hover li:hover a {
 	background: #7fad39;
 	border-color: #7fad39;
 }
 
-.featured__item__pic__hover li:hover a i,button[type=submit] {
+.featured__item__pic__hover li:hover a i {
 	color: #ffffff;
 	transform: rotate(360deg);
 }
 
-.featured__item__pic__hover li a ,button[type=submit]{
+.featured__item__pic__hover li a {
 	font-size: 16px;
 	color: #1c1c1c;
 	height: 40px;
