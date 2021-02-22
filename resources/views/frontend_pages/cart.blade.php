@@ -8,6 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+
                     @if (session('cart_delete'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>{{ session('cart_delete') }}</strong>
@@ -16,6 +17,7 @@
                             </button>
                         </div>
                     @endif
+
                     @if (session('cart_update'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>{{ session('cart_update') }}</strong>
@@ -49,7 +51,7 @@
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
-                                                <form action="{{ url('cart/quantity/update/'. $cart->id) }}"
+                                                <form action="{{ url('cart/update/'. $cart->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     <div class="pro-qty">
@@ -64,7 +66,7 @@
                                             ${{ $cart->price * $cart->qty }}
                                         </td>
                                         <td class="shoping__cart__item__close">
-                                            <a href="{{ url('cart/destroy/' . $cart->id) }}"><span class="icon_close">
+                                            <a href="{{ url('cart/delete/' . $cart->id) }}"><span class="icon_close">
                                                 </span>
                                             </a>
                                         </td>
@@ -85,8 +87,8 @@
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
+                            <form action="{{ url('/coupon/apply') }}" method="POST">
+                                <input type="text" name="coupon" placeholder="Enter your coupon code">
                                 <button type="submit" class="site-btn">APPLY COUPON</button>
                             </form>
                         </div>

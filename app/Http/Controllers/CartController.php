@@ -38,17 +38,42 @@ class CartController extends Controller {
         return view('frontend_pages.cart',compact('carts','subtotal'));
     }
 
-    public function quantityUpdate(Request $request,$cartId){
+    public function update(Request $request,$cartId){
         Cart::where('id',$cartId)->where('userIp',request()->ip())->update([
             'qty' => $request->qty,
         ]);
-        return Redirect()->back()->with('cart_update','quantity updated');
+        return Redirect()->back()->with('cart_update','cart updated');
     }
 
-    public function destroy($cartId){
+    public function delete($cartId){
         Cart::where('id',$cartId)->where('userIp',request()->ip())->delete();
-        return Redirect()->back()->with('cart_delete','product from cart Removed');
+        return Redirect()->back()->with('cart_delete','cart removed');
     }
 
+    public function applyCoupon(Request $request){
 
+        $check = Coupon::where('couponName',$request->couponName)->first();
+
+        if ($check) {  
+            $subtotal = Cart::all()->where('userIp',request()->ip())->sum(function($t){
+            return $t->price * $t->qty;
+            });
+
+            Session::put('coupon',[
+                'couponName'      => $check->couponName,
+                'discount'        => $check->discount,
+                'discount_amount' => $subtotal * ($check->discount/100),
+            ]);
+            return Redirect()->back()->with('cart_update','successfully coupon applied');
+        }else{
+            return Redirect()->back()->with('cart_delete','Invalid Coupon');
+        }
+    }
+
+    public function deleteCoupon(){
+        if (Session::has('coupon')) {
+           session()->forget('coupon');
+           return Redirect()->back()->with('cart_delete','coupon removed successfully');
+        }
+    }
 }

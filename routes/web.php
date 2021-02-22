@@ -85,6 +85,8 @@ Route::get('admin/coupon/active/{couponId}','Admin\CouponController@active');
 // ================= cart start============
 Route::post('add/to-cart/{prouctId}','CartController@addToCart');
 Route::get('view/cart','CartController@viewCart');
-Route::post('cart/quantity/update/{cartId}','CartController@quantityUpdate');
-Route::get('cart/destroy/{cartId}','CartController@destroy');
+Route::post('cart/update/{cartId}','CartController@update');
+Route::get('cart/delete/{cartId}','CartController@delete');
+Route::post('cart/coupon/apply','CartController@applyCoupon');
+Route::get('cart/coupon/delete','CartController@deleteCoupon');
 // ================= cart end============

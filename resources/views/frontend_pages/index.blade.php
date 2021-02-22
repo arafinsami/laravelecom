@@ -52,12 +52,12 @@
                                     <ul class="featured__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <form id="shoppingCartform" action="{{ url('add/to-cart/' . $product->id) }}"
+                                        <form id="{{ $product->id }}" action="{{ url('add/to-cart/' . $product->id) }}"
                                             method="POST">
                                             @csrf
                                             <input type="hidden" name="price" value="{{ $product->price }}">
                                             <li><a href="javascript:void()"
-                                                    onclick="document.getElementById('shoppingCartform').submit();"><i
+                                                    onclick="document.getElementById({{ $product->id }}).submit();"><i
                                                         class="fa fa-shopping-cart"></i></a></li>
                                         </form>
                                     </ul>
@@ -172,13 +172,6 @@
     <!-- Blog Section Begin -->
     <section class="from-blog spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title from-blog__title">
-                        <h2>From The Blog</h2>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
