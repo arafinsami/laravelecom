@@ -97,3 +97,7 @@ Route::get('add/to-wishlist/{prouctId}','WishlistController@addToWishlist');
 Route::get('wishlist','WishlistController@wishPage');
 Route::get('wishlist/delete/{prouctId}','WishlistController@delete');
 // ================= wishlist end============
+
+// ================= checkout start============
+Route::get('checkout','CheckoutController@index');
+// ================= checkout end============

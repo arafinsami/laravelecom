@@ -110,7 +110,7 @@
                         @else
                             <li>Total <span>${{ $subtotal }}</span></li>
                         @endif
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="{{ url('checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
