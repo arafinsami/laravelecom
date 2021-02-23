@@ -46,7 +46,7 @@
                                             <h5>{{ $wishlist->getProduct->productName }}</h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            ${{ $wishlist->getProduct->price }}
+                                            BDT {{ $wishlist->getProduct->price }}
                                         </td>
 
                                         <td class="shoping__cart__price">

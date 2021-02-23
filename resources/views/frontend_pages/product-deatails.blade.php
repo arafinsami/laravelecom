@@ -33,7 +33,7 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${{ $product->price }}</div>
+                        <div class="product__details__price">BDT {{ $product->price }}</div>
                         <p>{!! $product->shortDescription !!}</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
@@ -165,7 +165,7 @@
                                 <h6><a
                                         href="{{ url('proudct/details/' . $relatedProduct->id) }}">{{ $relatedProduct->productName }}</a>
                                 </h6>
-                                <h5>${{ $relatedProduct->price }}</h5>
+                                <h5>BDT {{ $relatedProduct->price }}</h5>
                             </div>
                         </div>
                     </div>

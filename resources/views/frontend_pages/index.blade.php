@@ -10,7 +10,9 @@
                     @foreach ($products as $product)
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="{{ $product->imageOne }}">
-                                <h5><a href="#">{{ $product->productName }}</a></h5>
+                                <h5><a
+                                        href="{{ url('proudct/details/' . $product->id) }}">{{ $product->productName }}</a>
+                                </h5>
                             </div>
                         </div>
                     @endforeach
@@ -67,7 +69,7 @@
                                     <h6><a
                                             href="{{ url('proudct/details/' . $product->id) }}">{{ $product->productName }}</a>
                                     </h6>
-                                    <h5>${{ $product->price }}</h5>
+                                    <h5>BDT {{ $product->price }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -107,14 +109,15 @@
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($latestProducts as $latestProduct)
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
+                                    <a href="{{ url('proudct/details/' . $latestProduct->id) }}"
+                                        class="latest-product__item">
                                         <div class="latest-product__item__pic">
                                             <img src="{{ asset($latestProduct->imageOne) }}"
                                                 style="width:100px;height:110px" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>{{ $latestProduct->productName }}</h6>
-                                            <span>${{ $latestProduct->price }}</span>
+                                            <span>BDT {{ $latestProduct->price }}</span>
                                         </div>
                                     </a>
                                 </div>
@@ -129,14 +132,15 @@
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($latestProducts as $latestProduct)
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
+                                    <a href="{{ url('proudct/details/' . $latestProduct->id) }}"
+                                        class="latest-product__item">
                                         <div class="latest-product__item__pic">
                                             <img src="{{ asset($latestProduct->imageOne) }}"
                                                 style="width:100px;height:110px" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>{{ $latestProduct->productName }}</h6>
-                                            <span>${{ $latestProduct->price }}</span>
+                                            <span>BDT {{ $latestProduct->price }}</span>
                                         </div>
                                     </a>
                                 </div>
@@ -151,14 +155,15 @@
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($latestProducts as $latestProduct)
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
+                                    <a href="{{ url('proudct/details/' . $latestProduct->id) }}"
+                                        class="latest-product__item">
                                         <div class="latest-product__item__pic">
                                             <img src="{{ asset($latestProduct->imageOne) }}"
                                                 style="width:100px;height:110px" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>{{ $latestProduct->productName }}</h6>
-                                            <span>${{ $latestProduct->price }}</span>
+                                            <span>BDT {{ $latestProduct->price }}</span>
                                         </div>
                                     </a>
                                 </div>

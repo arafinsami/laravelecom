@@ -48,7 +48,7 @@
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">Bangla</a></li>
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
@@ -81,8 +81,8 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> sami.cse.1112@gmail.com</li>
+                <li>Free Shipping for all Order of BDT 50</li>
             </ul>
         </div>
     </div>
@@ -96,8 +96,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> sami.cse.1112@gmail.com</li>
+                                <li>Free Shipping for all Order of BDT 50</li>
                             </ul>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">Bangla</a></li>
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
@@ -193,7 +193,7 @@
                                     <span>{{ $cartQuantity }}</span></a>
                             </li>
                         </ul>
-                        <div class="header__cart__price">item: <span>${{ $totalPrice }}</span></div>
+                        <div class="header__cart__price">item: <span>BDT {{ $totalPrice }}</span></div>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="hero__search__phone__text">
-                                    <h5>+65 11.188.888</h5>
+                                    <h5>+8801322457827</h5>
                                     <span>support 24/7 time</span>
                                 </div>
                             </div>

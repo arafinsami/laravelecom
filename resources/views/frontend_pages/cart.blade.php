@@ -47,7 +47,7 @@
                                             <h5>{{ $cart->getProduct->productName }}</h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            ${{ $cart->price }}
+                                            BDT {{ $cart->price }}
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
@@ -62,7 +62,7 @@
                                             </div>
                                         </td>
                                         <td class="shoping__cart__total">
-                                            ${{ $cart->price * $cart->qty }}
+                                            BDT {{ $cart->price * $cart->qty }}
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <a href="{{ url('cart/delete/' . $cart->id) }}"><span class="icon_close">
@@ -101,14 +101,14 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         @if (Session::has('coupon'))
-                            <li>Subtotal <span>${{ $subtotal }}</span></li>
+                            <li>Subtotal <span>BDT {{ $subtotal }}</span></li>
                             <li>Coupon <span>{{ session()->get('coupon')['couponName'] }} <a
                                         href="{{ url('/cart/coupon/delete') }}">X</a> </span></li>
                             <li>Discount <span>{{ session()->get('coupon')['discount'] }}% (
-                                    {{ session()->get('coupon')['discount'] }} tk )</span></li>
-                            <li>Total <span>${{ $subtotal - session()->get('coupon')['discount_amount'] }}</span></li>
+                                    {{ session()->get('coupon')['discount'] }} BDT )</span></li>
+                            <li>Total <span>BDT {{ $subtotal - session()->get('coupon')['discount_amount'] }}</span></li>
                         @else
-                            <li>Total <span>${{ $subtotal }}</span></li>
+                            <li>Total <span>BDT {{ $subtotal }}</span></li>
                         @endif
                         <a href="{{ url('checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
