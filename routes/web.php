@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/','IndexController@index');
+Route::get('proudct/details/{productId}','IndexController@productDetails');
 
 Auth::routes();
 
@@ -91,6 +92,8 @@ Route::post('cart/coupon/apply','CartController@applyCoupon');
 Route::get('cart/coupon/delete','CartController@deleteCoupon');
 // ================= cart end============
 
+// ================= wishlist start============
 Route::get('add/to-wishlist/{prouctId}','WishlistController@addToWishlist');
 Route::get('wishlist','WishlistController@wishPage');
 Route::get('wishlist/delete/{prouctId}','WishlistController@delete');
+// ================= wishlist end============
