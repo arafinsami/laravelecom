@@ -100,16 +100,6 @@
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
-                        {{-- <ul>
-                            @if (Session::has('coupon'))
-                                <li>Subtotal <span>${{ $subtotal }}</span></li>
-                                <li>Discount <span>${{ session()->get('coupon')['discount'] }}</span></li>
-                            @else
-                                <li>Subtotal <span>${{ $subtotal }}</span></li>
-                                <li>Total <span>${{ $subtotal * session()->get('coupon')['discount']}}</span></li>
-                            @endif
-                            <li>Total <span>${{ $subtotal }}</span></li>
-                        </ul> --}}
                         @if (Session::has('coupon'))
                             <li>Subtotal <span>${{ $subtotal }}</span></li>
                             <li>Coupon <span>{{ session()->get('coupon')['couponName'] }} <a

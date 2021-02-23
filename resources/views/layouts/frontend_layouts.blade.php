@@ -124,7 +124,7 @@
                                     <a href="{{ url('/register') }}"><i class="fa fa-sign-in"></i>Register</a>
                                 @else
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out"></i>
                                         {{ __('Logout') }}
                                     </a>
@@ -184,9 +184,11 @@
                                     return $t->price * $t->qty;
                                 });
                             $cartQuantity = App\Cart::where('userIp', request()->ip())->sum('qty');
+                            $wishqty = App\Wishlist::where('userId', Auth::id())->get();
                         @endphp
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="{{ url('wishlist') }}"><i class="fa fa-heart"></i>
+                                    <span>{{ count($wishqty) }}</span></a></li>
                             <li><a href="{{ url('view/cart') }}"><i class="fa fa-shopping-bag"></i>
                                     <span>{{ $cartQuantity }}</span></a>
                             </li>

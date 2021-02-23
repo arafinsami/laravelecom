@@ -90,3 +90,7 @@ Route::get('cart/delete/{cartId}','CartController@delete');
 Route::post('cart/coupon/apply','CartController@applyCoupon');
 Route::get('cart/coupon/delete','CartController@deleteCoupon');
 // ================= cart end============
+
+Route::get('add/to-wishlist/{prouctId}','WishlistController@addToWishlist');
+Route::get('wishlist','WishlistController@wishPage');
+Route::get('wishlist/delete/{prouctId}','WishlistController@delete');
