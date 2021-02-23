@@ -23,13 +23,14 @@ class CouponController extends Controller {
     }
 
     public function save(Request $request) {
-
         $this-> validate($request,[
-            'couponName' => 'required'
+            'couponName' => 'required',
+            'discount'   => 'required'
         ]);
 
         $coupon              = new Coupon();
         $coupon->couponName  = $request->couponName;
+        $coupon->discount    = $request->discount;
         $coupon->created_at  = Carbon::now();
         $coupon->save();
         return redirect(route('admin.coupon.lists'))->with('success','successfully created');
@@ -41,13 +42,14 @@ class CouponController extends Controller {
     }
 
     public function update(Request $request){
-
         $this-> validate($request,[
             'couponName' => 'required',
+            'discount'   => 'required'
         ]);
 
         $coupon              = Coupon::find($request->couponId);
         $coupon->couponName  = $request->couponName;
+        $coupon->discount  = $request->discount;
         $coupon->status      = $request->status;
         $coupon->updated_at  = Carbon::now();
         $coupon->update();

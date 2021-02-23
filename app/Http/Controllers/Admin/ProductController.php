@@ -29,7 +29,6 @@ class ProductController extends Controller {
     }
 
     public function save(Request $request) {
-
         $request->validate([
             'productName'         => 'required|max:255',
             'productSlug'         => 'required|max:255',
@@ -89,7 +88,6 @@ class ProductController extends Controller {
     }
 
     public function updateProduct(Request $request){
-
         $productId = $request->productId;
 
         Product::findOrFail($productId)->Update([
@@ -109,7 +107,6 @@ class ProductController extends Controller {
     }
 
     public function updateImage(Request $request){
-        
         $productId = $request->productId;
         $product   = Product::findOrFail($productId);
         $oldOne    = $product->imageOne;
@@ -133,7 +130,6 @@ class ProductController extends Controller {
         }
 
         if($request->hasFile('imageTwo')){
-
             if(file_exists($oldTwo)){
                 unlink($oldTwo);
             }
@@ -149,7 +145,6 @@ class ProductController extends Controller {
         }
 
         if($request->hasFile('imageThree')){
-
             if(file_exists($oldThree)){
                 unlink($oldThree);
             }
@@ -167,7 +162,6 @@ class ProductController extends Controller {
     }
     
     public function delete($productId) {
-
         $product    = Product::findOrFail($productId);
         $imageOne   = $product->imageOne;
         $imageTwo   = $product->imageTwo;

@@ -24,7 +24,6 @@ class CategoryController extends Controller {
     }
 
     public function save(Request $request) {
-
         $this-> validate($request,[
             'categoryName' => 'required'
         ]);
@@ -42,7 +41,6 @@ class CategoryController extends Controller {
     }
 
     public function update(Request $request){
-
         $this-> validate($request,[
             'categoryName' => 'required',
         ]);

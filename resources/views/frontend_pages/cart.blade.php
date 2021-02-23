@@ -51,8 +51,7 @@
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
-                                                <form action="{{ url('cart/update/'. $cart->id) }}"
-                                                    method="POST">
+                                                <form action="{{ url('cart/update/' . $cart->id) }}" method="POST">
                                                     @csrf
                                                     <div class="pro-qty">
                                                         <input type="text" name="qty" value="{{ $cart->qty }}" min="1">
@@ -84,23 +83,43 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="{{ url('/coupon/apply') }}" method="POST">
-                                <input type="text" name="coupon" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
+                    @if (Session::has('coupon'))
+                    @else
+                        <div class="shoping__continue">
+                            <div class="shoping__discount">
+                                <h5>Discount Codes</h5>
+                                <form action="{{ url('/cart/coupon/apply') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="couponName" placeholder="Enter your coupon code">
+                                    <button type="submit" class="site-btn">APPLY COUPON</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
-                        <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
-                        </ul>
+                        {{-- <ul>
+                            @if (Session::has('coupon'))
+                                <li>Subtotal <span>${{ $subtotal }}</span></li>
+                                <li>Discount <span>${{ session()->get('coupon')['discount'] }}</span></li>
+                            @else
+                                <li>Subtotal <span>${{ $subtotal }}</span></li>
+                                <li>Total <span>${{ $subtotal * session()->get('coupon')['discount']}}</span></li>
+                            @endif
+                            <li>Total <span>${{ $subtotal }}</span></li>
+                        </ul> --}}
+                        @if (Session::has('coupon'))
+                            <li>Subtotal <span>${{ $subtotal }}</span></li>
+                            <li>Coupon <span>{{ session()->get('coupon')['couponName'] }} <a
+                                        href="{{ url('/cart/coupon/delete') }}">X</a> </span></li>
+                            <li>Discount <span>{{ session()->get('coupon')['discount'] }}% (
+                                    {{ session()->get('coupon')['discount'] }} tk )</span></li>
+                            <li>Total <span>${{ $subtotal - session()->get('coupon')['discount_amount'] }}</span></li>
+                        @else
+                            <li>Total <span>${{ $subtotal }}</span></li>
+                        @endif
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>

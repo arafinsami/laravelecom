@@ -7,8 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -34,8 +33,7 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('guest:admin')->except('logout');
     }
 
@@ -48,8 +46,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function guard()
-    {
+    protected function guard(){
         return Auth::guard('admin');
     }
 }

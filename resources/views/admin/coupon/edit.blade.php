@@ -26,6 +26,13 @@
                         </div>
                         <div class="d-md-flex mg-b-30">
                             <div class="form-group mg-b-0">
+                                <label>coupon discount: <span class="tx-danger">*</span></label>
+                                <input type="text" name="discount" value="{{ $coupon->discount }}" class="form-control wd-200 wd-sm-250"
+                                    placeholder="coupon discount">
+                            </div>
+                        </div>
+                        <div class="d-md-flex mg-b-30">
+                            <div class="form-group mg-b-0">
                                 <label>choose status: <span class="tx-danger">*</span></label>
                                 <select name="status" class="form-control select2" data-placeholder="choose status"
                                     style="min-width: 248px;">

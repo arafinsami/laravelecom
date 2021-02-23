@@ -12,10 +12,9 @@ use App\Coupon;
 
 class CartController extends Controller {
 
-    public function addToCart(Request $request,$productId){
+    public function addToCart(Request $request,$productId) {
 
         $cart = Cart::where('productId',$productId)->where('userIp',request()->ip())->first();
-
         if ($cart) {
             Cart::where('productId',$productId)->where('userIp',request()->ip())->increment('qty');
             return Redirect()->back()->with('cart','product added on cart');
@@ -52,17 +51,17 @@ class CartController extends Controller {
 
     public function applyCoupon(Request $request){
 
-        $check = Coupon::where('couponName',$request->couponName)->first();
+        $couponCheck = Coupon::where('couponName',$request->couponName)->first();
 
-        if ($check) {  
+        if ($couponCheck) {  
             $subtotal = Cart::all()->where('userIp',request()->ip())->sum(function($t){
             return $t->price * $t->qty;
             });
 
             Session::put('coupon',[
-                'couponName'      => $check->couponName,
-                'discount'        => $check->discount,
-                'discount_amount' => $subtotal * ($check->discount/100),
+                'couponName'      => $couponCheck->couponName,
+                'discount'        => $couponCheck->discount,
+                'discount_amount' => $subtotal * ($couponCheck->discount/100),
             ]);
             return Redirect()->back()->with('cart_update','successfully coupon applied');
         }else{
